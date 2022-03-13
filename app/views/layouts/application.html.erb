@@ -24,19 +24,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
-            </li>
+            <% if @current_user %>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="/places">Home</a></li>
+            <% else %>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="/sessions/new">Home</a></li>
+            <% end %>
           </ul>
           <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/sessions/new">Login</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/users/new">Sign up</a>
-            </li>
+            <% if @current_user %>
+              <li class="nav-item">Logged in as: <%= @current_user.username %></li>
+              <li class="nav-item"><%= button_to "Logout", "/sessions/logout", method: :delete, class: "nav-link btn btn-success" %></li>
+            <% else %>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="/sessions/new">Login</a></li>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="/users/new">Sign up</a></li>
+            <% end %>
           </ul>
         </div>
       </div>
