@@ -1,16 +1,24 @@
-<h1><%= @place.name %></h1>
+<div class="container">
+  <div>
+    <h1><%= @place.name %></h1>
+  </div>
 
-<h2>My Posts</h2>
-<% for post in @place.posts %>
-  <h3><%= post.title %></h3>
-  <h4><%= post.posted_on %></h4>
-  <p><%= post.description %></p>
-<% end %>
+  <div>
+    <h2>My Posts</h2>
+  </div>
 
-<div class="mb-3", class: "btn btn-success">
-  <a href="/posts/new?place_id=<%= @place.id %>">New Post</a>
-</div>
+  <div class="row">
+    <% for post in @place.posts %>
+      <div class="col-md-3 col-sm-6">
+        <h3><%= post.title %></h3>
+        <h4><%= post.posted_on %></h4>
+        <p><%= post.description %></p>
+      </div>
+    <% end %>
+  </div>
 
-<div class="mb-3", class: "btn btn-success">
-  <a href="/places">Back to All Places</a>
+  <div class="mb-3">
+    <a class="btn btn-success" href="/posts/new?place_id=<%= @place.id %>">New Post</a>
+    <a class="btn btn-success" href="/places">Back to All Places</a>
+  </div>
 </div>
