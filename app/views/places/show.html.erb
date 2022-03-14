@@ -8,7 +8,7 @@
   </div>
 
   <div class="row">
-    <% for post in @place.posts %>
+    <% for post in @place.posts.where({user_id: @current_user.id}) %>
       <div class="col-md-4 col-sm-6">
         <h3><%= post.title %></h3>
         <h4><%= post.posted_on %></h4>
